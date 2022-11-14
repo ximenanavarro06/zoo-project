@@ -1,8 +1,35 @@
 fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
     .then(response => response.json())
-    .then(data => {
-        console.log(data)
+    .then(animals=> {
+        animals.forEach(oneAnimal => {
+            renderFrontCard(oneAnimal)
+        })
+
+        console.log(animals)
     })
+
+
+let currentAnimal; 
+
+function renderFrontCard(animal){
+    const animalName = document.querySelector("#animal")
+    animalName.textContent = `${animal.name}`
+
+    const animalImage = document.querySelector("#animal-image")
+    animalImage.src = `${animal.image_link}` 
+
+        // add submit event listener
+    currentAnimal = animal
+    // const donateForm = document.querySelector("#donate")
+    // donateForm.addEventListener("submit", (event) =>{
+    //     event.preventDefault();
+
+    // const addDonation = event.target.donation.value;
+    // currentAnimal.
+
+
+    // })
+}
 
 
 
