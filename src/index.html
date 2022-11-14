@@ -19,6 +19,60 @@
         <h3>Learn & search for your favorite animals during your visit!</h3>
     </div>
 
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-face-front">
+          <h2 id="animal" alt="animal name goes here">Animal Name</h2>
+          <img id ="animal-image" src="" alt="animal image goes here">
+  
+          <div> Did you spot the animal? <input type="checkbox" id="myCheck" onclick="spottedFunction()">
+            <label for="switch" class="toggle">
+                <p id="display-text" style="display:none">Animal was spotted! Great job!</p>
+            </label>
+          </div>
+         
+          <form id="donate">
+              <input type="text" name="donation" placeholder="Donate to this animal"> 
+              <btn>Donate</btn>
+          </form>
+  
+          <i class="fa fa-heart" id="heart"></i>
+
+        </div>
+
+        <div class="card-face-back">
+          <h3>Animal Details</h3>
+          <ul>
+            <li id="latin-name">Latin Name:</li> <p id="latin"></p>
+            <li id="type">Type:</li> <p id="animal-type"></p>
+            <li id="location">Location:</li> <p id="animal-location"></p>
+            <li id="habitat">Habitat:</li> <p id="animal-habitat"></p>
+            <li id ="diet">Diet:</li> <p id="animal-diet"></p>
+            <li id="'lifespan">Lifespan:</li> <p id="animal-lifespan"></p>
+            <li id="active-time">Active Time:</li> <p id="animal-active-time"></p>
+            <li id="max-weight">Max Weight:</li> <p id="animal-weight"></p>
+            <li id="max-length">Max Length:</li> <p id="animal-length"></p>
+          </ul>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+	<script src="index.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+<!-- 
     <div id="front-card">
         <h2 id="animal" alt="animal name goes here">Animal Name</h2>
         <img id ="animal-image" src="" alt="animal image goes here">
@@ -37,14 +91,14 @@
 
         <i class="fa fa-heart" id="heart"></i>
         
-    </div>
+    </div> -->
 
     
       
 
     
 
-    <div id="back-card">
+    <!-- <div id="back-card">
       <h3>Animal Details</h3>
       <ul>
         <li id="latin-name">Latin Name:</li> <p id="latin"></p>
@@ -61,13 +115,4 @@
 
     </div>
 
-    </body>
-
-
-
-
-
-	<script src="index.js"></script>
-  </body>
-</html>
-
+    </body> -->
