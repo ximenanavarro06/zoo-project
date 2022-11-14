@@ -1,12 +1,12 @@
 fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
     .then(response => response.json())
-    .then(animals=> {
-        animals.forEach(oneAnimal => {
-            renderFrontCard(oneAnimal)
-            renderBackCard(oneAnimal)
+    .then(animals => {
+        animals.forEach(animal => {
+            renderFrontCard(animal)
+            renderBackCard(animal)
         })
 
-        console.log(animals)
+        console.log(animal)
     })
 
 
