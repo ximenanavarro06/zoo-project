@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Zoo Animal Scavanger Hunt</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <img src = "assets/zoo-image.png" alt="Denver Zoo Logo">
@@ -17,19 +18,26 @@
     </div>
 
     <div id="front-card">
-        <h2 id="animal">Animal</h2>
+        <h2 id="animal" alt="animal name goes here">Animal Name</h2>
         <img id ="animal-image" src="" alt="animal image goes here">
 
-        <input type="checkbox" id="switch" class="checkbox"/>
-        <label for="switch" class="toggle">
-            <p>Spotted      Not Spotted</p>
-        </label>
-
+        <div> Did you spot the animal? <input type="checkbox" id="myCheck" onclick="spottedFunction()">
+          <label for="switch" class="toggle">
+              <p id="display-text" style="display:none">Animal was spotted! Great job!</p>
+          </label>
+        </div>
+       
 
         <form id="donate">
-            <input type="text" name="donation" placeholder="Donate"> 
+            <input type="text" name="donation" placeholder="Donate to this animal"> 
             <btn>Donate</btn>
         </form>
+
+        <i class="fa fa-heart" id="heart"></i>
+        
+
+
+
     </div>
 
 
