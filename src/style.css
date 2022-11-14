@@ -6,3 +6,7 @@
   #heart.red {
     color: red;
   }
+
+.animal-image {
+    max-width: 500px;
+}
