@@ -1,41 +1,36 @@
 fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
     .then(response => response.json())
-    .then(animals => {
+    .then(animals=> {
         animals.forEach(oneAnimal => {
-            renderBackCard(oneAnimal)
+            renderFrontCard(oneAnimal)
         })
+
         console.log(animals)
     })
 
-    function renderBackCard(animals) {
-        const latinName = document.querySelector("#latin-name");
-        latinName.textContent = `Latin Name: ${animals.latin_name}`;
 
-        const type = document.querySelector("#type")
-        type.textContent = `Type: ${animals.animal_type}`;
+let currentAnimal; 
 
-        const location = document.querySelector("#location")
-        location.textContent = `Location: ${animals.geo_range}`;
+function renderFrontCard(animal){
+    const animalName = document.querySelector("#animal")
+    animalName.textContent = `${animal.name}`
 
-        const habitat = document.querySelector("#habitat")
-        habitat.textContent = `Habitat: ${animals.habitat}`;
+    const animalImage = document.querySelector("#animal-image")
+    animalImage.src = `${animal.image_link}` 
 
-        const diet = document.querySelector("#diet")
-        diet.textContent = `Diet: ${animals.diet}`;
+        // add submit event listener
+    currentAnimal = animal
+    // const donateForm = document.querySelector("#donate")
+    // donateForm.addEventListener("submit", (event) =>{
+    //     event.preventDefault();
 
-        const lifespan = document.querySelector("#lifespan")
-        lifespan.textContent = `Lifespan: ${animals.lifespan}`;
+    // const addDonation = event.target.donation.value;
+    // currentAnimal.
 
-        const activeTime = document.querySelector("#active-time")
-        activeTime.textContent = `Active Time: ${animals.active_time}`;
 
-        const maxWeight = document.querySelector("#max-weight")
-        maxWeight.textContent = `Max Weight: ${animals.weight_max}`;
+    // })
+}
 
-        const maxLength = document.querySelector("#max-length")
-        maxLength.textContent = `Max Length: ${animals.length_max}`;
-
-    }
 
 
 
