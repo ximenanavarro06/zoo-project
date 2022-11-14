@@ -4,6 +4,11 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
         console.log(data)
     })
 
+
+
+
+
+
 // function spottedFunction(){
 //     const checkBox = document.querySelector("#myCheck");
 //     const text = document.querySelector("#display-text");
