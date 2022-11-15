@@ -4,30 +4,11 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
         animals.forEach(animal => {
             renderFrontCard(animal)
             renderBackCard(animal)
-            spottedFunction(animal)
         })
-
         console.log(animals)
     })
 
-let currentAnimal; 
-
-function spottedFunction(oneAnimal){
-    oneAnimal.forEach(animal=> {
-    const checkBox = document.querySelector("#myCheck");
-    const text = document.querySelector("#display-text");
-
-    console.log("random")
-
-    if (checkBox.checked == true){
-        text.style.display = "block"; 
-    } else { 
-        text.style.display = "none";
-    }
-})
-}    
-
-
+// front of card details 
 const cardFaceFront = document.querySelector(".card-face-front")
 function renderFrontCard(oneAnimal){
     const animalName = document.createElement('h2')
@@ -37,20 +18,50 @@ function renderFrontCard(oneAnimal){
     animalImage.classList = "animal-image"
     animalImage.src = oneAnimal.image_link
 
+    const spotted = document.createElement('div')
+    spotted.className = "spotted-element"
+    const spottedBtn = document.createElement("button")
+    spottedBtn.className = "spottedBtn"
+    spottedBtn.innerHTML = `<p>Click if you spotted the animal!</p>`
+
+        // add click event listener for Spotted Element: 
+    const message = document.createElement('p')
+    spottedBtn.addEventListener("click", event => {
+        if (event.target == "clicked") return; 
+        console.log("You spotted this animal! Great job Junior Zookeeper!")
+        message.textContent = "You spotted this animal! Great job Junior Zookeeper!"
+        
+        spotted.append(message)
+    })
+
     const formElement = document.createElement('form')
+    formElement.className = "donation"
     formElement.innerHTML = `
-    <input id="donation" type="text" name="donation" placeholder="Donate to this animal"> 
+    <input id="donation-amount" type="type" name="donation" placeholder="Donate to this animal"/> 
     <button value="Donate">Donate</button>
-        <p> 
-            $<span class="donation-count">0</span> Donated
+        <p id="donation-total"> 
+            $<span class="donation-count">0 </span> Donated
         </p>
     `;
 
-    const spotted = document.createElement('div')
-    spotted.innerHTML = `Did you spot the animal? 
-    <input type="checkbox" id="myCheck" onclick="spottedFunction()">
-        <p id="display-text" style="display:none">This animal was spotted! Great job Junior Zookeeper!</p>
-    `;
+
+    // add submit event listener for Donation Element:
+
+
+    let currentAnimal; 
+
+    formElement.addEventListener("submit", (event) => {
+        event.preventDefault(); 
+        currentAnimal = oneAnimal; 
+
+    // const message = document.createElement('p')
+    const moneyToAdd = event.target["donation-amount"].value; 
+    let num = parseInt(document.querySelector(".donation-count").textContent)
+    num += parseInt(moneyToAdd); 
+    const total = document.querySelector(".donation-count").textContent = num;
+
+    })
+
 
     const heartBtnRed = document.createElement('span')
     heartBtnRed.class = "fa fa-heart"
@@ -59,25 +70,9 @@ function renderFrontCard(oneAnimal){
     heartBtnEmpty.class = "fa fa-heart"
   
 
-    cardFaceFront.append(animalName, animalImage, heartBtnRed, heartBtnEmpty, formElement, spotted); 
+    cardFaceFront.append(animalName, animalImage, heartBtnRed, heartBtnEmpty, formElement, spotted, spottedBtn); 
 
 
-    // add submit event listener
-    let donationCounter = 0
-
-    formElement.addEventListener("submit", (event) => {
-        event.preventDefault(); 
-
-    //     const donationTotal = document.querySelector(".donation-count")
-    //     const moneyToDonate = event.target.donationCounter;  
-    //     currentAnimal.donationCounter += parseInt(moneyToDonate)
-    //     donationTotal.textContent = donationCounter
-
-    //     donationTotal.textContent = currentAnimal.donationCounter; 
-
-    //     cardFaceFront.append(donationTotal)
-
-    });
 
 }
 
