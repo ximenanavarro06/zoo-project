@@ -4,6 +4,7 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
         animals.forEach(animal => {
             renderFrontCard(animal)
             renderBackCard(animal)
+            spottedFunction(animal)
         })
 
         console.log(animals)
@@ -11,8 +12,23 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
 
 let currentAnimal; 
 
-const cardFaceFront = document.querySelector(".card-face-front")
+function spottedFunction(oneAnimal){
+    oneAnimal.forEach(animal=> {
+    const checkBox = document.querySelector("#myCheck");
+    const text = document.querySelector("#display-text");
 
+    console.log("random")
+
+    if (checkBox.checked == true){
+        text.style.display = "block"; 
+    } else { 
+        text.style.display = "none";
+    }
+})
+}    
+
+
+const cardFaceFront = document.querySelector(".card-face-front")
 function renderFrontCard(oneAnimal){
     const animalName = document.createElement('h2')
     animalName.textContent = oneAnimal.name
@@ -62,18 +78,9 @@ function renderFrontCard(oneAnimal){
     //     cardFaceFront.append(donationTotal)
 
     });
+
 }
 
-function spottedFunction(){
-    const checkBox = document.querySelector("#myCheck");
-    const text = document.querySelector("#display-text");
-
-    if (checkBox.checked == true){
-        text.style.display = "block"; 
-    } else { 
-        text.style.display = "none";
-    }
-}    
 
 // back of card details
 const cardFaceBack = document.querySelector(".card-face-back");
