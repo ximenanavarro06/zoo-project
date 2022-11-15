@@ -4,6 +4,7 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
         animals.forEach(animal => {
             renderFrontCard(animal)
             renderBackCard(animal)
+            flipCard(animal)
         })
         console.log(animals)
     })
@@ -11,6 +12,7 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
 // front of card details 
 const cardFaceFront = document.querySelector(".card-face-front")
 function renderFrontCard(oneAnimal){
+    
     const animalName = document.createElement('h2')
     animalName.textContent = oneAnimal.name
   
@@ -105,7 +107,22 @@ function renderBackCard(oneAnimal) {
     cardFaceBack.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
 }
 
+const card = document.querySelector("#card")
+card.addEventListener("click", flipCard);
+function flipCard() {
+    card.classList.toggle("flipCard")
+}
 
+
+document.querySelector("#person-name").addEventListener("change", myFunction)
+
+function personName() {
+    const name = document.querySelector("#person-name");
+    name.value = name.value.toUpperCase();
+  }
+
+// addEventListener('toggle', (e) => {});
+// ontoggle = (e) => { };
 
 
 
