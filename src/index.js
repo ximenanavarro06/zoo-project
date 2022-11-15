@@ -2,16 +2,41 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
     .then(response => response.json())
     .then(animals => {
         animals.forEach(animal => {
+            // animalCard(animals)
             renderFrontCard(animal)
             renderBackCard(animal)
             flipCard(animal)
         })
+
+        addDonations()
         console.log(animals)
     })
+
+// donation form submit event listener 
+function addDonations() {
+    const donationForm = document.querySelector("#donation-form");
+    donationForm.addEventListener("submit", (event) => {
+        event.preventDefault(); 
+
+    const moneyToAdd = event.target["donation-amount"].value; 
+    let num = parseInt(document.querySelector(".donation-count").textContent); 
+    num += parseInt(moneyToAdd); 
+    const total = document.querySelector(".donation-count").textContent = num; 
+    }); 
+
+}
+
+
 
 // front of card details 
 const cardFaceFront = document.querySelector(".card-face-front")
 function renderFrontCard(oneAnimal){
+
+    const animalContainer = document.createElement('div')
+    animalContainer.className = "animalCard"
+
+
+    cardFaceFront.append(animalContainer)
     
     const animalName = document.createElement('h2')
     animalName.textContent = oneAnimal.name
@@ -22,47 +47,27 @@ function renderFrontCard(oneAnimal){
 
     const spotted = document.createElement('div')
     spotted.className = "spotted-element"
-    const spottedBtn = document.createElement("button")
-    spottedBtn.className = "spottedBtn"
-    spottedBtn.innerHTML = `<p>Click if you spotted the animal!</p>`
+
+    const spottedBtnContainer = document.createElement('div')
+    spottedBtnContainer.className = "spotted-button"
+    spottedBtnContainer.innerHTML = `
+        <button id="card-button"> 
+            <p>Click if you spotted the animal!</p>
+        </button>
+    `
 
         // add click event listener for Spotted Element: 
     const message = document.createElement('p')
-    spottedBtn.addEventListener("click", event => {
+    spottedBtnContainer.addEventListener("click", event => {
         if (event.target == "clicked") return; 
         console.log("You spotted this animal! Great job Junior Zookeeper!")
         message.textContent = "You spotted this animal! Great job Junior Zookeeper!"
         
-        spotted.append(message)
+        spotted.append(message);
+        event.stopPropagation(); 
     })
 
-    const formElement = document.createElement('form')
-    formElement.className = "donation"
-    formElement.innerHTML = `
-    <input id="donation-amount" type="type" name="donation" placeholder="Donate to this animal"/> 
-    <button value="Donate">Donate</button>
-        <p id="donation-total"> 
-            $<span class="donation-count">0 </span> Donated
-        </p>
-    `;
 
-
-    // add submit event listener for Donation Element:
-
-
-    let currentAnimal; 
-
-    formElement.addEventListener("submit", (event) => {
-        event.preventDefault(); 
-        currentAnimal = oneAnimal; 
-
-    // const message = document.createElement('p')
-    const moneyToAdd = event.target["donation-amount"].value; 
-    let num = parseInt(document.querySelector(".donation-count").textContent)
-    num += parseInt(moneyToAdd); 
-    const total = document.querySelector(".donation-count").textContent = num;
-
-    })
 
 
     const heartBtnRed = document.createElement('span')
@@ -72,17 +77,22 @@ function renderFrontCard(oneAnimal){
     heartBtnEmpty.class = "fa fa-heart"
   
 
-    cardFaceFront.append(animalName, animalImage, heartBtnRed, heartBtnEmpty, formElement, spotted, spottedBtn); 
+    animalContainer.append(animalName, animalImage, heartBtnRed, heartBtnEmpty, spotted, spottedBtnContainer); 
 
 
 
 }
 
-
 // back of card details
 const cardFaceBack = document.querySelector(".card-face-back");
 
 function renderBackCard(oneAnimal) {
+    const animalInfo = document.createElement('div')
+    animalInfo.className = "animal-info"
+
+    cardFaceBack.append(animalInfo)
+
+
     const animalDetails = document.createElement('h3')
     animalDetails.textContent = "Animal Details"
     const latinName = document.createElement('p');
@@ -104,17 +114,19 @@ function renderBackCard(oneAnimal) {
     const maxLength = document.createElement('p');
     maxLength.textContent = `Max Length: ${oneAnimal.length_max} ft`;
 
-    cardFaceBack.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
+    animalInfo.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
 }
 
 const card = document.querySelector("#card")
 card.addEventListener("click", flipCard);
+//flipCard.preventDefault(); 
+
 function flipCard() {
     card.classList.toggle("flipCard")
 }
 
 
-document.querySelector("#person-name").addEventListener("change", myFunction)
+document.querySelector("#person-name").addEventListener("change", personName)
 
 function personName() {
     const name = document.querySelector("#person-name");
@@ -126,3 +138,159 @@ function personName() {
 
 
 
+    // const formElement = document.createElement('form')
+    // formElement.className = "donation"
+    // formElement.innerHTML = `
+    // <input id="donation-amount" type="text" name="donation" placeholder="Donate to this animal"/> 
+    // <button value="Donate">Donate</button>
+    //     <p id="donation-total"> 
+    //         $<span class="donation-count">0 </span> Donated
+    //     </p>
+    // `;
+
+
+    // // add submit event listener for Donation Element:
+
+
+    // let currentAnimal; 
+
+    // formElement.addEventListener("submit", (event) => {
+    //     event.preventDefault(); 
+    //     currentAnimal = oneAnimal; 
+
+    // // const message = document.createElement('p')
+    // const moneyToAdd = event.target["donation-amount"].value; 
+    // let num = parseInt(document.querySelector(".donation-count").textContent)
+    // num += parseInt(moneyToAdd); 
+    // const total = document.querySelector(".donation-count").textContent = num;
+
+    // })
+
+
+
+    // back of card details
+// const cardFaceBack = document.querySelector(".card-face-back");
+
+// function renderBackCard(oneAnimal) {
+//     const animalInfo = document.createElement('div')
+//     animalInfo.className = "animal-info"
+
+//     cardFaceBack.append(animalInfo)
+
+
+//     const animalDetails = document.createElement('h3')
+//     animalDetails.textContent = "Animal Details"
+//     const latinName = document.createElement('p');
+//     latinName.textContent = `Latin Name: ${oneAnimal.latin_name}`;
+//     const type = document.createElement('p');
+//     type.textContent = `Type: ${oneAnimal.animal_type}`;
+//     const location = document.createElement('p');
+//     location.textContent = `Location: ${oneAnimal.geo_range}`;
+//     const habitat = document.createElement('p');
+//     habitat.textContent = `Habitat: ${oneAnimal.habitat}`;
+//     const diet = document.createElement('p');
+//     diet.textContent = `Diet: ${oneAnimal.diet}`;
+//     const lifespan = document.createElement('p');
+//     lifespan.textContent = `Lifespan: ${oneAnimal.lifespan} years`;
+//     const activeTime = document.createElement('p');
+//     activeTime.textContent = `Active Time: ${oneAnimal.active_time}`;
+//     const maxWeight = document.createElement('p');
+//     maxWeight.textContent = `Max Weight: ${oneAnimal.weight_max} lbs`;
+//     const maxLength = document.createElement('p');
+//     maxLength.textContent = `Max Length: ${oneAnimal.length_max} ft`;
+
+//     animalInfo.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
+// }
+
+
+// function animalCard(oneAnimal){
+
+//     const allCards = document.querySelector("#allCards")
+
+
+//     const mainContainer = document.createElement('div')
+//     mainContainer.className = "main-container"
+
+//     allCards.append(mainContainer)
+
+
+//     const card = document.createElement('div')
+//     card.className = "oneCard"
+
+//     mainContainer.append(card)
+
+//     const innerCard = document.createElement('div')
+//     innerCard.className = "card-inner"
+
+//     card.append(innerCard)
+
+
+//     const frontCard = document.createElement('div')
+//     frontCard.className = "card-face-front"
+
+// //front card info //
+//             // const animalName = document.createElement('h2')
+//             // animalName.textContent = oneAnimal.name
+        
+//             // const animalImage = document.createElement('img')
+//             // animalImage.classList = "animal-image"
+//             // animalImage.src = oneAnimal.image_link
+
+//             // const spotted = document.createElement('div')
+//             // spotted.className = "spotted-element"
+
+//             // const spottedBtnContainer = document.createElement('div')
+//             // spottedBtnContainer.className = "spotted-button"
+//             // spottedBtnContainer.innerHTML = `
+//             //     <button id="card-button"> 
+//             //         <p>Click if you spotted the animal!</p>
+//             //     </button>
+//             // `
+
+//             //     // add click event listener for Spotted Element: 
+//             // const message = document.createElement('p')
+//             // spottedBtnContainer.addEventListener("click", event => {
+//             //     if (event.target == "clicked") return; 
+//             //     console.log("You spotted this animal! Great job Junior Zookeeper!")
+//             //     message.textContent = "You spotted this animal! Great job Junior Zookeeper!"
+                
+//             //     spotted.append(message);
+//             //     event.stopPropagation(); 
+//             // })
+//             // frontCard.append(animalName, animalImage, spotted, spottedBtnContainer); 
+
+
+//     const backCard = document.createElement('div')
+//     backCard.className = "card-face-back"
+//     // back card info //
+//         const animalDetails = document.createElement('h3')
+//         animalDetails.textContent = "Animal Details"
+//         const latinName = document.createElement('p');
+//         latinName.textContent = `Latin Name: ${oneAnimal.latin_name}`;
+//         const type = document.createElement('p');
+//         type.textContent = `Type: ${oneAnimal.animal_type}`;
+//         const location = document.createElement('p');
+//         location.textContent = `Location: ${oneAnimal.geo_range}`;
+//         const habitat = document.createElement('p');
+//         habitat.textContent = `Habitat: ${oneAnimal.habitat}`;
+//         const diet = document.createElement('p');
+//         diet.textContent = `Diet: ${oneAnimal.diet}`;
+//         const lifespan = document.createElement('p');
+//         lifespan.textContent = `Lifespan: ${oneAnimal.lifespan} years`;
+//         const activeTime = document.createElement('p');
+//         activeTime.textContent = `Active Time: ${oneAnimal.active_time}`;
+//         const maxWeight = document.createElement('p');
+//         maxWeight.textContent = `Max Weight: ${oneAnimal.weight_max} lbs`;
+//         const maxLength = document.createElement('p');
+//         maxLength.textContent = `Max Length: ${oneAnimal.length_max} ft`;
+
+//         backCard.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
+
+
+//     innerCard.append(frontCard, backCard)
+
+
+
+
+
+// }
