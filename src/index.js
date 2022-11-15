@@ -6,13 +6,8 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
             renderBackCard(animal)
         })
 
-
-        console.log(animal)
-
         console.log(animals)
-
     })
-
 
 let currentAnimal; 
 
@@ -30,16 +25,17 @@ function renderFrontCard(oneAnimal){
     formElement.innerHTML = `
     <input id="donation" type="text" name="donation" placeholder="Donate to this animal"> 
     <button value="Donate">Donate</button>
-    `
-
+        <p> 
+            $<span class="donation-count">0</span> Donated
+        </p>
+    `;
 
     const spotted = document.createElement('div')
     spotted.innerHTML = `Did you spot the animal? 
     <input type="checkbox" id="myCheck" onclick="spottedFunction()">
-        <label for="switch" class="toggle">
-            <p id="display-text" style="display:none">Animal was spotted! Great job!</p>
-     </label>
-    `
+        <p id="display-text" style="display:none">This animal was spotted! Great job Junior Zookeeper!</p>
+    `;
+
     const heartBtnRed = document.createElement('span')
     heartBtnRed.class = "fa fa-heart"
 
@@ -49,38 +45,42 @@ function renderFrontCard(oneAnimal){
 
     cardFaceFront.append(animalName, animalImage, heartBtnRed, heartBtnEmpty, formElement, spotted); 
 
-    // add submit event listener
 
+    // add submit event listener
     let donationCounter = 0
 
     formElement.addEventListener("submit", (event) => {
         event.preventDefault(); 
 
-        const donationTotal = document.createElement('span')
-        donationTotal.textContent = donationCounter
+    //     const donationTotal = document.querySelector(".donation-count")
+    //     const moneyToDonate = event.target.donationCounter;  
+    //     currentAnimal.donationCounter += parseInt(moneyToDonate)
+    //     donationTotal.textContent = donationCounter
 
+    //     donationTotal.textContent = currentAnimal.donationCounter; 
 
-        cardFaceFront.append(donationTotal)
-    })
+    //     cardFaceFront.append(donationTotal)
 
-        // add submit event listener
-    // currentAnimal = oneAnimal
-    // const donateForm = document.querySelector("#donate")
-    // donateForm.addEventListener("submit", (event) =>{
-    //     event.preventDefault();
-
-    // const addDonation = event.target.donation.value;
-    // currentAnimal.
-
-
-    // })
+    });
 }
-const cardFaceBack = document.querySelector(".card-face-back")
+
+function spottedFunction(){
+    const checkBox = document.querySelector("#myCheck");
+    const text = document.querySelector("#display-text");
+
+    if (checkBox.checked == true){
+        text.style.display = "block"; 
+    } else { 
+        text.style.display = "none";
+    }
+}    
+
+// back of card details
+const cardFaceBack = document.querySelector(".card-face-back");
 
 function renderBackCard(oneAnimal) {
     const animalDetails = document.createElement('h3')
     animalDetails.textContent = "Animal Details"
-
     const latinName = document.createElement('p');
     latinName.textContent = `Latin Name: ${oneAnimal.latin_name}`;
     const type = document.createElement('p');
@@ -92,7 +92,7 @@ function renderBackCard(oneAnimal) {
     const diet = document.createElement('p');
     diet.textContent = `Diet: ${oneAnimal.diet}`;
     const lifespan = document.createElement('p');
-    lifespan.textContent = `Lifespan: ${oneAnimal.lifespan}`;
+    lifespan.textContent = `Lifespan: ${oneAnimal.lifespan} years`;
     const activeTime = document.createElement('p');
     activeTime.textContent = `Active Time: ${oneAnimal.active_time}`;
     const maxWeight = document.createElement('p');
@@ -107,13 +107,3 @@ function renderBackCard(oneAnimal) {
 
 
 
-// function spottedFunction(){
-//     const checkBox = document.querySelector("#myCheck");
-//     const text = document.querySelector("#display-text");
-
-//     if (checkBox.checked == true){
-//         text.style.dislay = "block"; 
-//     } else { 
-//         text.style.display = "none"
-//     }
-// }
