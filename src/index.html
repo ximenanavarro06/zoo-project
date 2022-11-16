@@ -7,20 +7,27 @@
     <title>Zoo Animal Scavanger Hunt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   </head>
   <body>
-    <img src = "assets/zoo-image.png" alt="Denver Zoo Logo" id="logo-pic">
     <div id="title">
-        <h1>Welcome to the Denver Zoo!</h1>
-        <h2>Become a junior zookeeper!</h2>
-        <h3>Learn & search for your favorite animals during your visit!</h3>
-    </div>
+      <img src = "assets/zoo-image.png" alt="Denver Zoo Logo" id="logo-pic">
+        <h1 id="welcome">Welcome to the Denver Zoo!</h1>
+        <img src = "assets/zoo-image.png" alt="Denver Zoo Logo" id="logo-pic2">
+      </div>
+      <div>
+        <h2 id="intro">Become a junior zookeeper!</h2>
+        <h3 id="statement">Learn & search for your favorite animals during your visit!</h3>
+      </div>
+    
 
 
     <div id="enter-name">
       <p id="intro"> Are you ready to become a Junior ZooKeeper? Enter your name below to get started!</p>
       <input type="text" id="person-name" onchange="personName()" placeholder="Your Name Here">
-      <button> ENTER </button>
+      <button id="enterbutton"> ENTER </button>
     </div>
 
     <div id="instructions">
@@ -30,12 +37,14 @@
       <p id="step-4">Step 4: Explore the zoo and keep a lookout for the animals.</p>
       <p id="step-5">Step 5: Once you spot the animal, click the "I SPOTTED THIS ANIMAL!" button.</p>
       <p id="step-6">Step 6: Try to spot all 10 animals during your zoo visit!</p>
-      <p>And don't forget to donate to your favorite animals! </p>
+      
     </div>
 
 
     <div id ="donations">
+      <p id="comment">And don't forget to donate to your favorite animals! </p>
       <form id="donation-form">
+  
         <input id="donation-amount" type="text" placeholder="Donation Amount Here"/>
         <button id="donate-button" value="Donate">Donate</button>
         <p id="donation-total">
@@ -89,3 +98,57 @@
   <script src="index.js"></script>
   </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zoo Animal Scavanger Hunt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <img src = "assets/zoo-image.png" alt="Denver Zoo Logo" id="logo-pic">
+
+    <div id="title">
+        <h1>Welcome to the Denver Zoo!</h1>
+        <h2>Become a junior zookeeper!</h2>
+        <h3>Learn about & search for your favorite animals during your visit!</h3>
+    </div>
+
+    <div id="enter-name">
+      <p id="intro"> Are you ready to become a Junior ZooKeeper? Enter your name below to get started!</p>
+      <input type="text" id="person-name" onchange="personName()" placeholder="Your Name Here">
+      <button> ENTER </button>
+    </div>
+
+    <div id="instructions">
+      <p id="step-1">Step 1:  </p>
+      <p id="step-2">Step 2: </p>
+      <p id="step-3">Step 3: Once you spot the animal, click the "I Spotted the Animal!" </p>
+      <p id="step-4">Step 4: Don't </p>
+      <p>Don't forget to donate to your favorite animals! </p>
+    </div>
+
+    <div id ="donations">
+      <form id="donation-form">
+        <input id="donation-amount" type="text" placeholder="Donation amount"/>
+        <button id="donate-button" value="Donate">Donate</button>
+        <p id="donation-total">
+          $<span class="donation-count">0 </span> Donated
+        </p>
+      </form>
+    </div>
+    
+    <div id="main-container"></div>
+
+
+     
+  
+  
+	<script src="index.js"></script>
+  </body>
+</html> 
+ -->
