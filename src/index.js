@@ -52,7 +52,7 @@ function renderFrontCard(oneAnimal){
     spottedBtnContainer.addEventListener("click", event => {
         if (event.target == "clicked") return;
         console.log("You spotted this animal! Great job Junior Zookeeper!")
-        message.textContent = `You spotted this animal! Great job Junior Zookeeper!`
+        message.innerHTML = `You spotted the <strong>${oneAnimal.name}</strong>! Great job Junior Zookeeper!`
         spotted.append(message);
         event.stopPropagation();
     })
