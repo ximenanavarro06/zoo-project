@@ -11,24 +11,6 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/10")
         console.log(animals)
     })
 
-
-const visitorName = document.querySelector("#person-name")
-    visitorName.addEventListener("change", personName)
-    
-    function personName() {
-        const name = document.querySelector("#person-name");
-        name.value = name.value.toUpperCase();
-
-        name.value = createElement('usersName')
-        
-      }
-
-
-    
-        
-      
-    
-
 // donation form submit event listener 
 
 const visitorName = document.querySelector("#person-name")
@@ -74,12 +56,9 @@ function renderFrontCard(oneAnimal){
     spottedBtnContainer.addEventListener("click", event => {
         if (event.target == "clicked") return;
         console.log("You spotted this animal! Great job Junior Zookeeper!")
-
         message.textContent = `You spotted this animal! Great job ${visitorName} Junior Zookeeper!`
-        
-
         message.textContent = `You spotted this animal! Great job Junior Zookeeper!`
-
+        message.innerHTML = `You spotted the <strong>${oneAnimal.name}</strong>! Great job Junior Zookeeper!`
         spotted.append(message);
         event.stopPropagation();
     })
@@ -118,13 +97,7 @@ function renderBackCard(oneAnimal) {
     animalInfo.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
 }
 
-
 //Flip Card
-const card = document.querySelector("#card")
-card.addEventListener("dblClick", flipCard);
-//flipCard.preventDefault(); 
-
-
 const card = document.querySelector("#card")
 card.addEventListener("dblclick", flipCard);
 //flipCard.preventDefault();
