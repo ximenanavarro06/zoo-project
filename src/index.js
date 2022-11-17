@@ -101,7 +101,6 @@ function renderBackCard(oneAnimal) {
 //Flip Card
 const card = document.querySelector("#card")
 card.addEventListener("dblclick", flipCard);
-//flipCard.preventDefault();
 
 function flipCard() {
     card.classList.toggle("flipCard")

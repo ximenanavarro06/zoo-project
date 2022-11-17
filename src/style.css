@@ -177,6 +177,18 @@ html, body {
   padding-left: 100px;
 }
 
+#baboon {
+  height: 900px; 
+  width: auto;
+  padding-left: 200px;
+}
+
+#penguin {
+  height: 900px;
+  width: auto;
+  padding-left: 100px;
+}
+
 #card-button{
   background-color:white;
 }
