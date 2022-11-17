@@ -29,6 +29,7 @@ function addDonations() {
     let num = parseInt(document.querySelector(".donation-count").textContent);
     num += parseInt(moneyToAdd);
     const total = document.querySelector(".donation-count").textContent = num;
+    event.target.reset(); 
     });
 }
 // front of card details
@@ -74,26 +75,26 @@ function renderBackCard(oneAnimal) {
     const animalInfo = document.createElement('div')
     animalInfo.className = "animal-info"
     cardFaceBack.append(animalInfo)
-    const animalDetails = document.createElement('h3')
+    const animalDetails = document.createElement('h2')
     animalDetails.textContent = `Animal Details: ${oneAnimal.name}`
     const latinName = document.createElement('p');
-    latinName.textContent = `Latin Name: ${oneAnimal.latin_name}`;
+    latinName.innerHTML = `<u>Latin Name</u>: ${oneAnimal.latin_name}`;
     const type = document.createElement('p');
-    type.textContent = `Type: ${oneAnimal.animal_type}`;
+    type.innerHTML = `<u>Type</u>: ${oneAnimal.animal_type}`;
     const location = document.createElement('p');
-    location.textContent = `Location: ${oneAnimal.geo_range}`;
+    location.innerHTML = `<u>Location</u>: ${oneAnimal.geo_range}`;
     const habitat = document.createElement('p');
-    habitat.textContent = `Habitat: ${oneAnimal.habitat}`;
+    habitat.innerHTML = `<u>Habitat</u>: ${oneAnimal.habitat}`;
     const diet = document.createElement('p');
-    diet.textContent = `Diet: ${oneAnimal.diet}`;
+    diet.innerHTML = `<u>Diet</u>: ${oneAnimal.diet}`;
     const lifespan = document.createElement('p');
-    lifespan.textContent = `Lifespan: ${oneAnimal.lifespan} years`;
+    lifespan.innerHTML = `<u>Lifespan</u: ${oneAnimal.lifespan} years`;
     const activeTime = document.createElement('p');
-    activeTime.textContent = `Active Time: ${oneAnimal.active_time}`;
+    activeTime.innerHTML = `<u>Active Time</u>: ${oneAnimal.active_time}`;
     const maxWeight = document.createElement('p');
-    maxWeight.textContent = `Max Weight: ${oneAnimal.weight_max} lbs`;
+    maxWeight.innerHTML = `<u>Max Weight</u>: ${oneAnimal.weight_max} lbs`;
     const maxLength = document.createElement('p');
-    maxLength.textContent = `Max Length: ${oneAnimal.length_max} ft`;
+    maxLength.innerHTML = `<u>Max Length</u>: ${oneAnimal.length_max} ft`;
     animalInfo.append(animalDetails, latinName, type, location, habitat, diet, lifespan, activeTime, maxWeight, maxLength)
 }
 
